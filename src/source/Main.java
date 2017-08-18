@@ -41,9 +41,8 @@ public class Main {
 	}
 
 	/**
-	 * Largest prime factor 
-	 * The prime factors of 13195 are 5, 7, 13 and 29. 
-	 * What is the largest prime factor of the number 600851475143 ?
+	 * Largest prime factor The prime factors of 13195 are 5, 7, 13 and 29. What
+	 * is the largest prime factor of the number 600851475143 ?
 	 **/
 	private static long problem3() {
 
@@ -66,11 +65,31 @@ public class Main {
 		return answer;
 	}
 
+	/**
+	 *Largest palindrome product
+	 *A palindromic number reads the same both ways. 
+	 *The largest palindrome made from the product of two 2-digit numbers is 9009 = 91 × 99.
+	 *Find the largest palindrome made from the product of two 3-digit numbers.
+	*/
+	private static long problem4() {
+		long answer = 0;
+		for (int i = 999; i > 99; i--)
+			for (int j = 999; j > 99; j--) {
+				answer = i * j;
+				StringBuffer tmp = new StringBuffer(String.valueOf(answer));
+				if (tmp.toString().equals(tmp.reverse().toString())) {
+					return answer;
+				}
+			}
+		return answer;
+	}
+
 	public static void main(String[] args) {
 		System.out.println("The Euler Project");
 		System.out.println("The answer for Problem 1 - Multiples of 3 and 5 is: " + problem1());
 		System.out.println("The answer for Problem 2 - Fibonacci even Numbers is: " + problem2());
 		System.out.println("The answer for Problem 3 - Largest prime factor is: " + problem3());
+		System.out.println("The answer for Problem 4 - Largest palindrome product is: " + problem4());
 	}
 
 }
