@@ -74,11 +74,11 @@ public class Main {
 	private static long problem4() {
 		long answer = 0;
 		for (int i = 999; i > 99; i--)
-			for (int j = 999; j > 99; j--) {
-				answer = i * j;
-				StringBuffer tmp = new StringBuffer(String.valueOf(answer));
-				if (tmp.toString().equals(tmp.reverse().toString())) {
-					return answer;
+			for (int j = 998; j > 99 ; j--) {
+				long temp = i * j;
+				StringBuffer tmp = new StringBuffer(String.valueOf( temp));
+				if (tmp.toString().equals(tmp.reverse().toString()) && temp > answer) {
+					answer = temp;
 				}
 			}
 		return answer;
