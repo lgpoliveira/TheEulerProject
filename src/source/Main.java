@@ -3,121 +3,24 @@ package source;
 import java.util.ArrayList;
 import java.util.List;
 
-import problems.*;
+import problems.Problem1;
+import problems.Problem2;
+import problems.Problem3;
+import problems.Problem4;
+import problems.Problem5;
+import problems.Problem6;
+import problems.Problem7;
+import problems.Problem8;
 
 //TODO: Refactor the main class and put each problem method in a separate class
 public class Main {
 
 	
 
-	/**
-	 * Sum square difference The sum of the squares of the first ten natural
-	 * numbers is, 12 + 22 + ... + 102 = 385 The square of the sum of the first
-	 * ten natural numbers is, (1 + 2 + ... + 10)2 = 552 = 3025 Hence the
-	 * difference between the sum of the squares of the first ten natural
-	 * numbers and the square of the sum is 3025 − 385 = 2640. Find the
-	 * difference between the sum of the squares of the first one hundred
-	 * natural numbers and the square of the sum.
-	 */
-	private static long problem6() {
-		long answer = 0, sum = 0;
-		for (int i = 1; i <= 100; i++) {
-			sum += i;
-			answer += (i * i);
-		}
-		answer = (sum * sum) - answer;
-		return answer;
-	}
 
-	/**
-	 * 10001st prime By listing the first six prime numbers: 2, 3, 5, 7, 11, and
-	 * 13, we can see that the 6th prime is 13. What is the 10 001st prime
-	 * number?
-	 */
-	private static long problem7() {
-		List<Long> primes = new ArrayList<Long>();
-		long count = 1;
-		boolean isPrime = true;
-		primes.add(2L);
-		while (primes.size() < 10001) {
-			count += 2;
-			int j = 0;
-			isPrime = true;
-			while ((primes.get(j) * primes.get(j)) <= count) {
-				if (count % primes.get(j) == 0) {
-					isPrime = false;
-					break;
-				}
-				j++;
-			}
-			if (isPrime) {
-				primes.add(count);
-			}
 
-		}
-		return primes.get(primes.size() - 1);
-	}
 
-	/**
-	 * Largest product in a series The four adjacent digits in the 1000-digit
-	 * number that have the greatest product are 9 × 9 × 8 × 9 = 5832. Find the
-	 * thirteen adjacent digits in the 1000-digit number that have the greatest
-	 * product. What is the value of this product?
-	 */
-	private static long problem8() {
-		StringBuffer baseNumber = new StringBuffer();
-		baseNumber.append("73167176531330624919225119674426574742355349194934")
-				.append("96983520312774506326239578318016984801869478851843")
-				.append("8586156078911294949545950173795833195285328805511")
-				.append("12540698747158523863050715693290963295227443043557")
-				.append("66896648950445244523161731856403098711121722383113")
-				.append("6222989342338038135336276614282806444486645238749")
-				.append("3035890729629049156044077239071381051585930796866")
-				.append("701724271218839987979879227492190169972888093776")
-				.append("65727333001053367881220235421809751254540594752243")
-				.append("52584907711670556013604839586446706324415722155397")
-				.append("5369781797784617406495514929862569321978468622482")
-				.append("83972241375657056057490261407972968652414535100474")
-				.append("8216637048440319989008895243450658541227588666881")
-				.append("1642717147992444292823863465674813919123162824586")
-				.append("17866458359124566529476545682848912883142607690042")
-				.append("2421902267105562632111110937054421750694165896048")
-				.append("07198403850962455444362981230987879927244284909188")
-				.append("84580156166097919133875499200524063689912560717606")
-				.append("05886116467109405077541002256983155200055935729725")
-				.append("7163626956188267042825248360823257530420752963450");
-		char[] dst = new char[13];
-		int actualInit = 0;
-		int actualEnd = 13;
-		long answer = 0;
-		long calc = 0;
-		while (actualEnd <= baseNumber.length() - 1) {
-			calc = 1;
-			dst = new char[13];
-			baseNumber.getChars(actualInit, actualEnd, dst, 0);
-			if (!containsZero(dst)) {
-				for (int i = 0; i < dst.length; i++) {
-					calc = calc * Long.valueOf(String.valueOf(dst[i]));
-				}
-				if (calc > answer)
-					answer = calc;
-				actualInit++;
-				actualEnd++;
-			} else {
-				actualInit = actualInit + String.valueOf(dst).lastIndexOf("0") + 1;
-				actualEnd = actualInit + 13;
-			}
-		}
-		return answer;
-	}
-
-	private static boolean containsZero(char[] dst) {
-		for (int i = 0; i < dst.length; i++) {
-			if (Long.valueOf(String.valueOf(dst[i])) == 0)
-				return true;
-		}
-		return false;
-	}
+	
 
 	/**
 	 * Special Pythagorean triplet A Pythagorean triplet is a set of three
@@ -235,6 +138,8 @@ public class Main {
 
 		return answer;
 	}
+	
+	
 
 	public static void main(String[] args) {
 		System.out.println("The Euler Project");
@@ -243,12 +148,14 @@ public class Main {
 		System.out.println("The answer for Problem 003 - Largest prime factor is: " + Problem3.solution());
 		System.out.println("The answer for Problem 004 - Largest palindrome product is: " + Problem4.solution());
 		System.out.println("The answer for Problem 005 - Smallest multiple is: " + Problem5.solution());
-		System.out.println("The answer for Problem 006 - Sum square difference is: " + problem6());
-		System.out.println("The answer for Problem 007 - 10001st prime is: " + problem7());
-		System.out.println("The answer for Problem 008 - Largest product in a series is: " + problem8());
+		System.out.println("The answer for Problem 006 - Sum square difference is: " + Problem6.solution());
+		System.out.println("The answer for Problem 007 - 10001st prime is: " + Problem7.solution());
+		System.out.println("The answer for Problem 008 - Largest product in a series is: " + Problem8.solution());
 		System.out.println("The answer for Problem 009 - Special Pythagorean triplet is: " + problem9());
 		System.out.println("The answer for Problem 010 - Summation of primes is: " + problem10());
 		System.out.println("The answer for Problem 011 - Largest product in a grid is: " + problem11());
+		System.out.println("==============================================================================");
+		
 	}
 
 }
